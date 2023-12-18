@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmoretti <bmoretti@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 16:29:10 by bmoretti          #+#    #+#             */
-/*   Updated: 2023/11/30 16:17:25 by bmoretti         ###   ########.fr       */
+/*   Updated: 2023/12/18 19:59:04 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,16 @@
  * This function adds the given new element to the end of the linked list.
  * If the list is empty, the new element becomes the first element.
  *
- * @param lst A pointer to a pointer to the head of the list.
- * @param new The element to be added to the end of the list.
+ * @param lst A pointer to the list.
+ * @param el The element to be added to the end of the list.
  */
-void	ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list *lst, t_element *el)
 {
-	t_list	*el;
-
-	if (!new)
+	if (!el)
 		return ;
-	else if (!*lst)
-		*lst = new;
-	else
-	{
-		el = *lst;
-		while (el->next)
-			el = el->next;
-		el->next = new;
-	}
+	if (lst->last)
+		lst->last->next = el;
+	lst->last = el;
+	if (!lst->first)
+		lst->first = el;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmoretti <bmoretti@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 11:48:52 by bmoretti          #+#    #+#             */
-/*   Updated: 2023/11/30 16:18:27 by bmoretti         ###   ########.fr       */
+/*   Updated: 2023/12/18 20:12:09 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,29 +33,24 @@
  */
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*new_lst;
-	t_list	*el;
+	t_list		*new_lst;
+	t_element	*el;
+	t_element	*new_el;
 
-	if (!lst || !f)
+	if (!lst || !lst->first || !f)
 		return (NULL);
-	el = ft_lstnew(f(lst->content));
-	if (!el)
+	new_lst = ft_calloc(1, sizeof(t_list));
+	el = lst->first;
+	while (el)
 	{
-		ft_lstclear(&lst, del);
-		return (NULL);
-	}
-	new_lst = el;
-	lst = lst->next;
-	while (lst)
-	{
-		el = ft_lstnew(f(lst->content));
-		if (!el)
+		new_el = ft_lstnewelement(f(el->content));
+		if (!new_el)
 		{
-			ft_lstclear(&new_lst, del);
-			break ;
+			ft_lstclear(new_lst, del);
+			return (NULL);
 		}
-		lst = lst->next;
-		ft_lstadd_back(&new_lst, el);
+		el = el->next;
+		ft_lstadd_back(new_lst, new_el);
 	}
 	return (new_lst);
 }

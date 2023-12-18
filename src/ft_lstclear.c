@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmoretti <bmoretti@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 17:44:21 by bmoretti          #+#    #+#             */
-/*   Updated: 2023/11/30 16:17:52 by bmoretti         ###   ########.fr       */
+/*   Updated: 2023/12/18 19:14:54 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,25 @@
  * by `lst` using the provided deletion function `del`. The head of the list is
  * set to NULL after the operation.
  *
- * @param lst A pointer to a pointer to the head of the list.
+ * @param lst A pointer to the list.
  * @param del The function used to delete the content of each element.
  *            If NULL, the content will not be deleted.
  */
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_lstclear(t_list *lst, void (*del)(void*))
 {
-	t_list	*el;
-	t_list	*next_el;
+	t_element	*el;
+	t_element	*next_el;
 
-	if (!lst || !*lst)
+	if (!lst)
 		return ;
-	el = *lst;
+	el = lst->first;
 	while (el)
 	{
 		next_el = el->next;
-		ft_lstdelone(el, del);
+		ft_lstdelone(lst, el, del);
 		el = next_el;
 	}
-	*lst = NULL;
+	free (lst);
 }

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_lstnewelement.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmoretti <bmoretti@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 10:31:55 by bmoretti          #+#    #+#             */
-/*   Updated: 2023/11/30 16:18:36 by bmoretti         ###   ########.fr       */
+/*   Updated: 2023/12/18 20:12:58 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
- * @file ft_lstnew.c
- * @brief Implementation of the ft_lstnew function.
+ * @file ft_lstnewelement.c
+ * @brief Implementation of the ft_lstnewelement function.
  */
 
 #include "libft.h"
@@ -26,11 +26,11 @@
  * @param content The content to be stored in the new element.
  * @return A pointer to the new element, or NULL if memory allocation fails.
  */
-t_list	*ft_lstnew(void *content)
+t_element	*ft_lstnewelement(void *content)
 {
-	t_list	*el;
+	t_element	*el;
 
-	el = malloc(sizeof(t_list));
+	el = malloc(sizeof(t_element));
 	if (el == NULL)
 		return (NULL);
 	el->content = content;

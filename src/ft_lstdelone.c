@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmoretti <bmoretti@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 17:32:26 by bmoretti          #+#    #+#             */
-/*   Updated: 2023/11/30 16:18:00 by bmoretti         ###   ########.fr       */
+/*   Updated: 2023/12/18 19:57:25 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,17 @@
  * @param del The function used to delete the content of the element.
  *            If NULL, the content will not be deleted.
  */
-void	ft_lstdelone(t_list *lst, void (*del)(void*))
+void	ft_lstdelone(t_list *lst, t_element *el, void (*del)(void*))
 {
-	if (!lst)
+	if (!el)
 		return ;
-	if (del)
-		del(lst->content);
-	free (lst);
+	if (lst)
+	{
+		if (el == lst->first)
+			lst->first = el->next;
+		if (el == lst->last)
+			lst->last = ft_lstsecondlast(lst);
+	}
+	del(el->content);
+	free (el);
 }
