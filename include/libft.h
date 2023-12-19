@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:55:00 by bmoretti          #+#    #+#             */
-/*   Updated: 2023/12/18 20:11:48 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/19 09:04:51 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ typedef struct s_list
 {
 	t_element	*first;
 	t_element	*last;
+	size_t		list_size;
 }	t_list;
 
 t_element	*ft_lstnewelement(void *content);

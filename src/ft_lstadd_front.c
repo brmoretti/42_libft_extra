@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 10:55:27 by bmoretti          #+#    #+#             */
-/*   Updated: 2023/12/18 19:59:16 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/19 09:08:37 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,5 @@ void	ft_lstadd_front(t_list *lst, t_element *el)
 	lst->first = el;
 	if (!lst->last)
 		lst->last = el;
+	lst->list_size++;
 }
