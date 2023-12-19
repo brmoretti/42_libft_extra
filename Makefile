@@ -19,6 +19,9 @@ SRC_FILES		=	ft_atof.c					\
 					ft_isprint.c				\
 					ft_isspace.c				\
 					ft_itoa.c					\
+					ft_itoa_base_int.c			\
+					ft_itoa_base_uint.c			\
+					ft_itoa_base_ulong.c		\
 					ft_lstadd_back.c			\
 					ft_lstadd_front.c			\
 					ft_lstclear.c				\
@@ -40,6 +43,7 @@ SRC_FILES		=	ft_atof.c					\
 					ft_split.c					\
 					ft_strchr.c					\
 					ft_strdup.c					\
+					ft_strisdigit				\
 					ft_striteri.c				\
 					ft_strjoin.c				\
 					ft_strlcat.c				\
@@ -49,6 +53,8 @@ SRC_FILES		=	ft_atof.c					\
 					ft_strncmp.c				\
 					ft_strnstr.c				\
 					ft_strrchr.c				\
+					ft_strtolower.c				\
+					ft_strtoupper.c				\
 					ft_strtrim.c				\
 					ft_substr.c					\
 					ft_tolower.c				\

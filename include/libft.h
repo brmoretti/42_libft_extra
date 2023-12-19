@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:55:00 by bmoretti          #+#    #+#             */
-/*   Updated: 2023/12/19 09:04:51 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/19 14:41:36 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int			ft_isalnum(int c);
 int			ft_isascii(int c);
 int			ft_isprint(int c);
 int			ft_isspace(int c);
+int			ft_strisdigit(const char *str);
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
@@ -74,6 +75,11 @@ void		*ft_memset(void *s, int c, size_t n);
 double		ft_atof(const char *nptr);
 int			ft_atoi(const char *nptr);
 char		*ft_itoa(int n);
+char		*ft_itoa_base_int(int n, int base);
+char		*ft_itoa_base_uint(unsigned int n, int base);
+char		*ft_itoa_base_ulong(unsigned long n, int base);
+char		*ft_strtolower(char	*str);
+char		*ft_strtoupper(char	*str);
 int			ft_toupper(int c);
 int			ft_tolower(int c);
 
