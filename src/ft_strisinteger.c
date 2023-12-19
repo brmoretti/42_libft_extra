@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strisdigit.c                                    :+:      :+:    :+:   */
+/*   ft_strisinteger.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/19 14:31:22 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/19 14:47:01 by brmoretti        ###   ########.fr       */
+/*   Created: 2023/12/19 16:54:12 by brmoretti         #+#    #+#             */
+/*   Updated: 2023/12/19 17:08:32 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/**
- * @file ft_strisdigit.c
- * @brief Implementation of the ft_strisdigit function.
- */
-
-#include "libft.h"
 
 /**
- * @brief Checks if all characters in a string are digits.
- *
- * This function iterates through each character in the input string
- * and checks if it is a digit using the ft_isdigit function.
- *
- * @param str The input string to be checked.
- * @return    1 if all characters are digits, 0 otherwise.
+ * @file ft_strisinteger.c
+ * @brief Implentation of the ft_strisinteger function
  */
-int	ft_strisdigit(const char *str)
+
+/**
+ * @brief Checks if a string is an integer.
+ *
+ * @param str The string to check.
+ * @return 1 if the string is an integer, 0 otherwise.
+ */
+int	ft_strisinteger(const char *str)
 {
+	if (*str == '-' || *str == '+')
+		str++;
 	while (*str)
-		if (!ft_isdigit((int)*(str++)))
+		if (!('0' <= *str && *str <= '9'))
 			return (0);
 	return (1);
 }

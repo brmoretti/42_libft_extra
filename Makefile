@@ -43,7 +43,8 @@ SRC_FILES		=	ft_atof.c					\
 					ft_split.c					\
 					ft_strchr.c					\
 					ft_strdup.c					\
-					ft_strisdigit				\
+					ft_strisinteger.c			\
+					ft_strisnumber.c			\
 					ft_striteri.c				\
 					ft_strjoin.c				\
 					ft_strlcat.c				\
