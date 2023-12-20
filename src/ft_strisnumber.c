@@ -6,10 +6,9 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 16:54:12 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/19 17:08:24 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/20 13:53:37 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 /**
  * @file ft_strisnumber.c
