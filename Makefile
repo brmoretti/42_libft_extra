@@ -51,6 +51,7 @@ SRC_FILES		=	ft_atof.c					\
 					ft_strlcpy.c				\
 					ft_strlen.c					\
 					ft_strmapi.c				\
+					ft_strmerge.c				\
 					ft_strncmp.c				\
 					ft_strnstr.c				\
 					ft_strrchr.c				\
