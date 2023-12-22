@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 10:31:55 by bmoretti          #+#    #+#             */
-/*   Updated: 2023/12/18 20:12:58 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/22 12:45:44 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,9 @@ t_element	*ft_lstnewelement(void *content)
 {
 	t_element	*el;
 
-	el = malloc(sizeof(t_element));
+	el = ft_calloc(1, sizeof(t_element));
 	if (el == NULL)
 		return (NULL);
 	el->content = content;
-	el->next = NULL;
 	return (el);
 }

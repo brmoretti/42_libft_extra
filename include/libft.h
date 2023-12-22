@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:55:00 by bmoretti          #+#    #+#             */
-/*   Updated: 2023/12/20 17:03:04 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/22 15:45:53 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,14 @@ void		ft_putnbr_fd(int n, int fd);
 
 /*
 ** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
-**                             LINKED LISTS
+**                                MATH
+*/
+
+int			ft_abs(int nb);
+
+/*
+** -.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-.-'-
+**                           LINKED LISTS
 */
 
 typedef struct s_element
@@ -105,6 +112,7 @@ typedef struct s_element
 	void				*content;
 	size_t				content_size;
 	struct s_element	*next;
+	struct s_element	*previous;
 }	t_element;
 
 typedef struct s_list
@@ -123,5 +131,7 @@ void		ft_lstdelone(t_list *lst, t_element *el, void (*del)(void*));
 void		ft_lstclear(t_list *lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_element	*ft_lstpop(t_list *lst, int index);
+t_element	*ft_lstpickel(t_list *lst, int index)
 
 #endif

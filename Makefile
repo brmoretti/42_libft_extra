@@ -8,7 +8,8 @@ CC_FLAGS 		=	-Wall -Werror -Wextra -O2
 
 #≻───░⋆ ✪ PROJECT DIRECTORIES & FILES ✪ ⋆░───────────────────────────────────≺#
 INCLUDES		=	-I./include
-SRC_FILES		=	ft_atof.c					\
+SRC_FILES		=	ft_abs.c					\
+					ft_atof.c					\
 					ft_atoi.c					\
 					ft_bzero.c					\
 					ft_calloc.c					\
