@@ -30,6 +30,8 @@ SRC_FILES		=	ft_abs.c					\
 					ft_lstiter.c				\
 					ft_lstmap.c					\
 					ft_lstnewelement.c			\
+					ft_lstpickel.c				\
+					ft_lstpop.c					\
 					ft_lstsecondlast.c			\
 					ft_lstsize.c				\
 					ft_memchr.c					\

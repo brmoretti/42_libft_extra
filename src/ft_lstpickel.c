@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 15:32:18 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/22 15:53:57 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/22 16:04:52 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ t_element	*ft_lstpickel(t_list *lst, int index)
 {
 	t_element	*el;
 
-	if ((!lst) || (index < 0 && -index > lst->size)
-		|| (index >= 0 && index + 1 > lst->size)
-		return (NULL)
+	if ((!lst) || (index < 0 && - index > (int)lst->size)
+		|| (index >= 0 && index + 1 > (int)lst->size))
+		return (NULL);
 	if (index < 0)
 	{
 		el = lst->last;

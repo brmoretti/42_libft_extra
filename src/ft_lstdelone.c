@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 17:32:26 by bmoretti          #+#    #+#             */
-/*   Updated: 2023/12/22 15:30:06 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/22 16:00:32 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,5 @@ void	ft_lstdelone(t_list *lst, t_element *el, void (*del)(void*))
 	}
 	del(el->content);
 	free (el);
-	lst->list_size--;
+	lst->size--;
 }

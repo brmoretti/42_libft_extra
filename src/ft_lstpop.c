@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/22 14:40:40 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/22 15:54:09 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/22 16:03:23 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ t_element	*ft_lstpop(t_list *lst, int index)
 	}
 	el->next = NULL;
 	el->prev = NULL;
-	lst->list_size--;
+	lst->size--;
 	return (el);
 }

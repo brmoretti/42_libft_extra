@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:55:00 by bmoretti          #+#    #+#             */
-/*   Updated: 2023/12/22 15:45:53 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/22 15:59:38 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,14 +112,14 @@ typedef struct s_element
 	void				*content;
 	size_t				content_size;
 	struct s_element	*next;
-	struct s_element	*previous;
+	struct s_element	*prev;
 }	t_element;
 
 typedef struct s_list
 {
 	t_element	*first;
 	t_element	*last;
-	size_t		list_size;
+	size_t		size;
 }	t_list;
 
 t_element	*ft_lstnewelement(void *content);
@@ -132,6 +132,6 @@ void		ft_lstclear(t_list *lst, void (*del)(void*));
 void		ft_lstiter(t_list *lst, void (*f)(void *));
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_element	*ft_lstpop(t_list *lst, int index);
-t_element	*ft_lstpickel(t_list *lst, int index)
+t_element	*ft_lstpickel(t_list *lst, int index);
 
 #endif
