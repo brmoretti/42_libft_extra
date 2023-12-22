@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 17:32:26 by bmoretti          #+#    #+#             */
-/*   Updated: 2023/12/22 16:00:32 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/22 16:34:21 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,20 @@
  */
 
 #include "libft.h"
+
+static void	ft_el_is_first(t_list *lst, t_element *el)
+{
+	lst->first = el->next;
+	if (lst->first)
+		lst->first->prev = NULL;
+}
+
+static void	ft_el_is_last(t_list *lst, t_element *el)
+{
+	lst->last = el->prev;
+	if (lst->last)
+		lst->last->next = NULL;
+}
 
 /**
  * @brief Deletes a single element from a linked list.
@@ -39,15 +53,12 @@ void	ft_lstdelone(t_list *lst, t_element *el, void (*del)(void*))
 			el->prev->next = el->next;
 			el->next->prev = el->prev;
 		}
-		if (el == lst->first)
+		else
 		{
-			lst->first = el->next;
-			lst->first->prev = NULL;
-		}
-		if (el == lst->last)
-		{
-			lst->last = el->prev;
-			lst->last->next = NULL;
+			if (el == lst->first)
+				ft_el_is_first(lst, el);
+			if (el == lst->last)
+				ft_el_is_last(lst, el);
 		}
 	}
 	del(el->content);
