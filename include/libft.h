@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:55:00 by bmoretti          #+#    #+#             */
-/*   Updated: 2023/12/22 16:35:38 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/22 18:56:06 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void		*ft_memset(void *s, int c, size_t n);
 
 double		ft_atof(const char *nptr);
 int			ft_atoi(const char *nptr);
+long long	ft_atoll(const char *nptr);
 char		*ft_itoa(int n);
 char		*ft_itoa_base_int(int n, int base);
 char		*ft_itoa_base_uint(unsigned int n, int base);
