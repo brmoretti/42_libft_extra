@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 10:55:27 by bmoretti          #+#    #+#             */
-/*   Updated: 2023/12/21 21:11:00 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/21 21:25:48 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_lstadd_front(t_list *lst, t_element *el)
 	if (!el)
 		return ;
 	if (lst->first)
-		el->next = lst->first->next;
+		el->next = lst->first;
 	else
 		el->next = NULL;
 	lst->first = el;
