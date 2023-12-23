@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 20:24:51 by bmoretti          #+#    #+#             */
-/*   Updated: 2023/12/22 18:56:23 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/22 19:11:04 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
  */
 long long	ft_atoll(const char *nptr)
 {
-	int			sign;
+	int				sign;
 	long long	nb;
 
 	sign = 1;
