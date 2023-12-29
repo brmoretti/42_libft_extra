@@ -23,9 +23,7 @@ SRC_FILES		=	ft_abs.c					\
 					ft_isprint.c				\
 					ft_isspace.c				\
 					ft_itoa.c					\
-					ft_itoa_base_int.c			\
-					ft_itoa_base_uint.c			\
-					ft_itoa_base_ulong.c		\
+					ft_itoa_base.c				\
 					ft_lstadd_back.c			\
 					ft_lstadd_front.c			\
 					ft_lstclear.c				\
@@ -67,6 +65,8 @@ SRC_FILES		=	ft_abs.c					\
 					ft_substr.c					\
 					ft_tolower.c				\
 					ft_toupper.c				\
+					ft_ultoa_base.c				\
+					ft_utoa_base.c				\
 					get_next_line.c
 SRC_DIR			=	src
 BUILD_DIR		=	build

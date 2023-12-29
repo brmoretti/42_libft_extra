@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:55:00 by bmoretti          #+#    #+#             */
-/*   Updated: 2023/12/22 18:56:06 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/29 11:04:51 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ double		ft_atof(const char *nptr);
 int			ft_atoi(const char *nptr);
 long long	ft_atoll(const char *nptr);
 char		*ft_itoa(int n);
-char		*ft_itoa_base_int(int n, int base);
-char		*ft_itoa_base_uint(unsigned int n, int base);
-char		*ft_itoa_base_ulong(unsigned long n, int base);
+char		*ft_itoa_base(int n, int base);
+char		*ft_utoa_base(unsigned int n, int base);
+char		*ft_ultoa_base(unsigned long n, int base);
 char		*ft_strtolower(char	*str);
 char		*ft_strtoupper(char	*str);
 int			ft_toupper(int c);

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base_uint.c                                :+:      :+:    :+:   */
+/*   ft_utoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 23:45:36 by bmoretti          #+#    #+#             */
-/*   Updated: 2023/12/19 14:56:00 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/29 11:04:10 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /**
- * @file ft_itoa_base_uint.c
- * @brief Implementation of the ft_itoa_base_uint function.
+ * @file ft_utoa_base.c
+ * @brief Implementation of the ft_utoa_base function.
  */
 
 #include "libft.h"
@@ -55,7 +55,7 @@ static char	ft_digit_representation(int n)
  *             NULL is returned in case of an invalid base or memory
  * allocation failure.
  */
-char	*ft_itoa_base_uint(unsigned int n, int base)
+char	*ft_utoa_base(unsigned int n, int base)
 {
 	char	*a;
 	size_t	size;
