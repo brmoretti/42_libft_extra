@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 10:19:00 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/29 10:25:42 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/29 15:18:03 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,10 @@ static char	*ft_line_iterative(int fd, char *buffer, ssize_t *read_size)
 			*read_size = read(fd, buffer, BUFFER_SIZE);
 		if ((!*read_size && !*buffer) || *read_size == -1)
 			return (line);
+		if (!line)
+			line = ft_calloc(1, sizeof(char));
+		if (!line)
+			return (NULL);
 		line = ft_join_till_bslash_n(line, buffer);
 		if (!line)
 			return (NULL);
