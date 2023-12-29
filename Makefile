@@ -4,10 +4,12 @@ LIB				=	libft.a
 AR				=	ar
 AR_FLAGS		=	rcs
 CC				=	cc
-CC_FLAGS 		=	-Wall -Werror -Wextra -O2
+CC_FLAGS 		=	-Wall -Werror -Wextra -O3
 
 #≻───░⋆ ✪ PROJECT DIRECTORIES & FILES ✪ ⋆░───────────────────────────────────≺#
 INCLUDES		=	-I./include
+INCLUDES_FILES	=	get_next_line.h				\
+					libft.h
 SRC_FILES		=	ft_abs.c					\
 					ft_atof.c					\
 					ft_atoi.c					\
@@ -64,21 +66,22 @@ SRC_FILES		=	ft_abs.c					\
 					ft_strtrim.c				\
 					ft_substr.c					\
 					ft_tolower.c				\
-					ft_toupper.c
+					ft_toupper.c				\
+					get_next_line.c
 SRC_DIR			=	src
 BUILD_DIR		=	build
 SRCS			=	$(addprefix ./$(SRC_DIR)/, $(SRC_FILES))
 OBJS 			=	$(addprefix ./$(BUILD_DIR)/, $(SRC_FILES:.c=.o))
 
 #≻───░⋆ ✪ COLORS ✪ ⋆░────────────────────────────────────────────────────────≺#
-RED					=	\033[0;31m
-YELLOW				=	\033[0;33m
-BLUE				=	\033[0;34m
-MAGENTA				=	\033[0;35m
-CYAN				=	\033[0;36m
-WHITE				=	\033[0;37m
-GREEN				=	\033[0;32m
-DEFAULT 			=	\033[0:0m
+RED				=	\033[0;31m
+YELLOW			=	\033[0;33m
+BLUE			=	\033[0;34m
+MAGENTA			=	\033[0;35m
+CYAN			=	\033[0;36m
+WHITE			=	\033[0;37m
+GREEN			=	\033[0;32m
+DEFAULT 		=	\033[0:0m
 
 #≻───░⋆ ✪ RULES ✪ ⋆░─────────────────────────────────────────────────────────≺#
 .PHONY: all clean fclean re
