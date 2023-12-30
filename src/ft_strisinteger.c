@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 16:54:12 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/23 00:55:34 by brmoretti        ###   ########.fr       */
+/*   Updated: 2023/12/30 11:34:46 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
  */
 int	ft_strisinteger(const char *str)
 {
+	if(!str || !*str)
+		return (0);
 	if (*str == '-' || *str == '+')
 		str++;
 	while (*str)
