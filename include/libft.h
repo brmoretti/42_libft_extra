@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:55:00 by bmoretti          #+#    #+#             */
-/*   Updated: 2023/12/29 12:40:12 by brmoretti        ###   ########.fr       */
+/*   Updated: 2024/01/04 09:55:32 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ char		*get_next_line(int fd);
 typedef struct s_element
 {
 	void				*content;
-	size_t				content_size;
 	struct s_element	*next;
 	struct s_element	*prev;
 }	t_element;
