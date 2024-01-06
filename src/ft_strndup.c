@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bmoretti <bmoretti@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 12:48:11 by bmoretti          #+#    #+#             */
-/*   Updated: 2024/01/05 13:13:10 by bmoretti         ###   ########.fr       */
+/*   Updated: 2024/01/06 09:54:11 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,13 @@ char	*ft_strndup(const char *s, size_t n)
 	size_t	i;
 
 	i = 0;
-	while (s[i])
+	while (s[i] && i < n)
 		i++;
-	if (n < i)
-		i = n;
 	ptr = malloc(i + 1);
 	if (!ptr)
 		return (NULL);
-	i = 0;
-	while (s && *s && i < n)
-		ptr[i++] = *s++;
 	ptr[i] = '\0';
+	while (i--)
+		ptr[i] = s[i];
 	return (ptr);
 }
