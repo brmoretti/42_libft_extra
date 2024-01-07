@@ -5,152 +5,154 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 10:19:00 by brmoretti         #+#    #+#             */
-/*   Updated: 2023/12/29 15:18:03 by brmoretti        ###   ########.fr       */
+/*   Created: 2024/01/06 19:16:35 by brmoretti         #+#    #+#             */
+/*   Updated: 2024/01/07 12:56:10 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+/**
+ * @file get_next_line.c
+ * @brief Implementation of the get_next_line function.
+ */
+
 #include "get_next_line.h"
 
 /**
- * @brief Calculates the length of a string until the first newline character.
- *
- * @param s The input string.
- * @return The length of the string until the first newline character.
+ * Merges the right string with the left string, up to a specified number of
+ * characters from the right string.
+ * 
+ * @param left The left string to merge.
+ * @param right The right string to merge.
+ * @param n_right The number of characters from the right string to merge.
+ * @return The merged string, or NULL if memory allocation fails.
  */
-static size_t	ft_strlen_till_bslash_n(const char *s)
+static char	*merge_n_right(char *left, char *right, size_t n_right)
+{
+	char	*merged;
+	size_t	size;
+
+	size = ft_strlen(left) + n_right + 1;
+	merged = malloc(size * sizeof(char));
+	if (merged)
+	{
+		merged[--size] = '\0';
+		while (n_right-- && size--)
+			merged[size] = right[n_right];
+		while (size--)
+			merged[size] = left[size];
+	}
+	free(left);
+	return (merged);
+}
+
+/**
+ * Merges the characters from the buffer with the existing line until a newline
+ * character is encountered. If no newline character is encountered, the
+ * function merges all the characters from the buffer with the existing line.
+ * 
+ * @param line The existing line to merge with.
+ * @param buf The buffer containing the characters to merge.
+ * @return The merged line.
+ */
+static char	*ft_merge_till_bslash_n(char *line, t_buffer *buf)
 {
 	size_t	i;
+	size_t	n_right;
+	char	*merged;
 
-	if (!s)
-		return (0);
-	i = 0;
-	while (s[i])
-	{
-		if (s[++i - 1] == '\n')
-			break ;
-	}
-	return (i);
-}
-
-/**
- * @brief Joins two strings until the first newline character is encountered
- *        in the second string or until the end if not encountered.
- *
- * @param dst The destination string.
- * @param src The source string.
- * @return The joined string.
- */
-static char	*ft_join_till_bslash_n(char *dst, char *src)
-{
-	ssize_t	i;
-	ssize_t	j;
-	char	*joined;
-
-	joined = malloc(ft_strlen(dst) + ft_strlen_till_bslash_n(src) + 1);
-	if (!joined)
-		return (NULL);
-	i = 0;
-	while (dst && dst[i])
-	{
-		joined[i] = dst[i];
+	i = buf->pos;
+	while (buf->buffer[i] && buf->buffer[i] != '\n')
 		i++;
-	}
-	if (dst)
-		free(dst);
-	j = 0;
-	while (src && src[j])
+	if (buf->buffer[i] == '\n')
 	{
-		joined[i + j] = src[j];
-		if (src[++j - 1] == '\n')
-			break ;
+		i++;
+		buf->bslash = 1;
 	}
-	joined[i + j] = '\0';
-	return (joined);
+	n_right = i - buf->pos;
+	merged = merge_n_right(line, &buf->buffer[buf->pos], n_right);
+	buf->pos = i;
+	return (merged);
 }
 
 /**
- * @brief Cut and paste the content of one string to the beginning of another.
- *
- * @param to The destination string.
- * @param from The source string.
+ * @brief Reads from a file descriptor and constructs a line by merging the
+ * read data until a newline character is encountered.
+ * 
+ * This function iteratively reads from the file descriptor `fd` and merges the
+ * read data with the existing `line` until a newline character is encountered.
+ * It uses a type buffer `buf` to store the read data and keep track of the
+ * current position in the buffer as well as whether a newline character has
+ * been encountered.
+ * 
+ * @param buf The buffer used to store the read data and track the current
+ * position.
+ * @param fd The file descriptor to read from.
+ * @param line The current line being constructed.
+ * @return A pointer to the constructed line, or NULL if an error occurs or the
+ * end of file is reached.
  */
-static void	ft_move_to_begin(char *to, char *from)
+static char	*line_iterative(t_buffer *buf, int fd, char *line)
 {
-	while (*from)
-		*(to++) = *(from++);
-	while (*to)
-		(*to++) = '\0';
-}
+	ssize_t	read_size;
 
-/**
- * @brief Reads lines iteratively from a file descriptor until a newline
- *        character is encountered, the file ends or an read error occurs.
- *
- * @param fd The file descriptor.
- * @param buffer The buffer for reading from the file.
- * @param read_size A pointer to the variable storing the read size.
- * @return The next line read from the file.
- */
-static char	*ft_line_iterative(int fd, char *buffer, ssize_t *read_size)
-{
-	char	*slash_n;
-	char	*line;
-
-	line = NULL;
 	while (1)
 	{
-		if (!*buffer)
-			*read_size = read(fd, buffer, BUFFER_SIZE);
-		if ((!*read_size && !*buffer) || *read_size == -1)
+		if (!buf->pos)
+		{
+			read_size = read(fd, buf->buffer, BUFFER_SIZE);
+			if (read_size == -1 || (!read_size && !*line))
+			{
+				free(line);
+				return (NULL);
+			}
+			if (!read_size)
+				return (line);
+		}
+		line = ft_merge_till_bslash_n(line, buf);
+		if (!line || buf->bslash)
 			return (line);
-		if (!line)
-			line = ft_calloc(1, sizeof(char));
-		if (!line)
-			return (NULL);
-		line = ft_join_till_bslash_n(line, buffer);
-		if (!line)
-			return (NULL);
-		slash_n = ft_strchr(buffer, '\n');
-		if (slash_n)
-			break ;
-		ft_bzero(buffer, BUFFER_SIZE + 1);
+		buf->pos = 0;
+		ft_bzero(buf->buffer, BUFFER_SIZE);
 	}
-	ft_move_to_begin(buffer, slash_n + 1);
-	return (line);
 }
 
 /**
- * @brief Reads the next line from a file descriptor. Can handle multiples file
- *        descriptors at once.
- *
- * @param fd The file descriptor.
- * @return The next line read from the file.
+ * @brief Reads the next line from a file descriptor.
+ * 
+ * This function reads the next line from the file descriptor specified by
+ * `fd`.
+ * It uses a static array of buffers to store the data read from the file.
+ * The function returns a pointer to the line read, or NULL if an error occurs
+ * or if the end of the file has been reached.
+ * 
+ * @param fd The file descriptor to read from.
+ * @return A pointer to the line read, or NULL if an error occurs or if the end
+ * of the file has been reached.
  */
 char	*get_next_line(int fd)
 {
-	static char	*buffer[1024];
-	char		*line;
-	ssize_t		read_size;
+	static t_buffer	*arr[1024];
+	char			*line;
 
-	read_size = 0;
-	if (fd < 0 || BUFFER_SIZE <= 0 || fd > 1023)
+	if (fd < 0 || BUFFER_SIZE < 1 || fd >= 1024)
 		return (NULL);
-	if (!buffer[fd])
-		buffer[fd] = ft_calloc(BUFFER_SIZE + 1, 1);
-	if (!buffer[fd])
+	if (!arr[fd])
+		arr[fd] = ft_calloc(1, sizeof(t_buffer));
+	if (!arr[fd])
 		return (NULL);
-	line = ft_line_iterative(fd, buffer[fd], &read_size);
-	if (read_size == -1 || (buffer[fd] && !*buffer[fd]))
+	line = ft_calloc(1, sizeof(char));
+	if (!line)
 	{
-		free (buffer[fd]);
-		buffer[fd] = NULL;
+		free (arr[fd]);
+		arr[fd] = NULL;
+		return (NULL);
 	}
-	if (line && (read_size == -1 || !*line))
+	arr[fd]->bslash = 0;
+	line = line_iterative(arr[fd], fd, line);
+	if (!line)
 	{
-		free (line);
-		return (NULL);
+		free(arr[fd]);
+		arr[fd] = NULL;
 	}
 	return (line);
 }
