@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 19:16:35 by brmoretti         #+#    #+#             */
-/*   Updated: 2024/01/07 12:56:10 by brmoretti        ###   ########.fr       */
+/*   Updated: 2024/01/08 13:50:58 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,18 +140,13 @@ char	*get_next_line(int fd)
 		arr[fd] = ft_calloc(1, sizeof(t_buffer));
 	if (!arr[fd])
 		return (NULL);
+	arr[fd]->bslash = 0;
 	line = ft_calloc(1, sizeof(char));
+	if (line)
+		line = line_iterative(arr[fd], fd, line);
 	if (!line)
 	{
 		free (arr[fd]);
-		arr[fd] = NULL;
-		return (NULL);
-	}
-	arr[fd]->bslash = 0;
-	line = line_iterative(arr[fd], fd, line);
-	if (!line)
-	{
-		free(arr[fd]);
 		arr[fd] = NULL;
 	}
 	return (line);
