@@ -6,7 +6,7 @@
 /*   By: bmoretti <bmoretti@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:55:00 by bmoretti          #+#    #+#             */
-/*   Updated: 2024/01/05 12:59:09 by bmoretti         ###   ########.fr       */
+/*   Updated: 2024/01/09 12:08:06 by bmoretti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,6 @@ typedef struct s_list
 }	t_list;
 
 t_element	*ft_lstnewelement(void *content);
-t_element	*ft_lstsecondlast(t_list *lst);
 void		ft_lstadd_front(t_list *lst, t_element *el);
 int			ft_lstsize(t_list *lst);
 void		ft_lstadd_back(t_list *lst, t_element *el);
