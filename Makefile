@@ -89,7 +89,7 @@ DEFAULT 		=	\033[0:0m
 all: $(NAME)
 
 $(NAME) : $(BUILD_DIR) $(OBJS)
-	@ printf "$(GREEN)$(LIB)$(DEFAULT) successfully generated\n"
+	@ printf "$(CYAN)libft: $(GREEN)$(LIB)$(DEFAULT) successfully generated\n"
 
 $(BUILD_DIR):
 	@ mkdir $(BUILD_DIR)
@@ -101,10 +101,11 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 
 clean:
 	@ rm -rf $(BUILD_DIR)
-	@ printf "build directory have been cleaned\n"
+	@ printf "$(CYAN)libft: $(DEFAULT)$(MAGENTA)\
+	$(BUILD_DIR)$(DEFAULT) directory have been cleaned\n"
 
 fclean: clean
 	@ rm -f $(LIB)
-	@ printf "$(MAGENTA)$(LIB)$(DEFAULT) have been cleaned\n"
+	@ printf "$(CYAN)libft: $(MAGENTA)$(LIB)$(DEFAULT) have been cleaned\n"
 
 re: fclean all
