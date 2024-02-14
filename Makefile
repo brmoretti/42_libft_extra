@@ -26,6 +26,7 @@ SRC_FILES		=	ft_abs.c					\
 					ft_itoa.c					\
 					ft_lstadd_after.c			\
 					ft_lstadd_back.c			\
+					ft_lstadd_before.c			\
 					ft_lstadd_front.c			\
 					ft_lstclear.c				\
 					ft_lstdelone.c				\
