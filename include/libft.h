@@ -6,7 +6,7 @@
 /*   By: brmoretti <brmoretti@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 15:55:00 by bmoretti          #+#    #+#             */
-/*   Updated: 2024/02/14 15:39:16 by brmoretti        ###   ########.fr       */
+/*   Updated: 2024/02/14 15:43:15 by brmoretti        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,8 +131,8 @@ typedef struct s_list
 }	t_list;
 
 void		ft_lstadd_after(t_list *lst, t_element *ref, t_element *el);
-void		ft_lstadd_before(t_list *lst, t_element *ref, t_element *el);
 void		ft_lstadd_back(t_list *lst, t_element *el);
+void		ft_lstadd_before(t_list *lst, t_element *ref, t_element *el);
 void		ft_lstadd_front(t_list *lst, t_element *el);
 void		ft_lstclear(t_list *lst, void (*del)(void*));
 void		ft_lstdelone(t_list *lst, t_element *el, void (*del)(void*));
