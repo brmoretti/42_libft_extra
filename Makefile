@@ -22,8 +22,9 @@ SRC_FILES		=	ft_abs.c					\
 					ft_isdigit.c				\
 					ft_isprint.c				\
 					ft_isspace.c				\
-					ft_itoa.c					\
 					ft_itoa_base.c				\
+					ft_itoa.c					\
+					ft_lstadd_after.c			\
 					ft_lstadd_back.c			\
 					ft_lstadd_front.c			\
 					ft_lstclear.c				\
@@ -45,6 +46,7 @@ SRC_FILES		=	ft_abs.c					\
 					ft_putstr_fd.c				\
 					ft_split.c					\
 					ft_strchr.c					\
+					ft_strcmp.c					\
 					ft_strdup.c					\
 					ft_strisinteger.c			\
 					ft_strisnumber.c			\
